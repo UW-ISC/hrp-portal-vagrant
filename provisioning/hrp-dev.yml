@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  tasks:
+    - name: update system packages...
+      sudo: yes
+      apt:
+        cache_valid_time=86400
+        update_cache=yes
+        upgrade=safe
+      ignore_errors: yes
