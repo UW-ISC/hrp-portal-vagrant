@@ -1,13 +1,6 @@
 ---
 - hosts: all
 
-  vars:
-    apt_install_packages: ['apache2',
-                           'apache2-utils',
-                           'libapache2-mod-php5',
-                           'php5']
-    root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'}]
-
   tasks:
     - name: update system packages...
       sudo: yes
