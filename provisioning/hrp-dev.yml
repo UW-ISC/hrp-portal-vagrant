@@ -42,6 +42,18 @@
         enabled: true
       with_items: "{{ services }}"
 
+    - name: remove /var/www/html
+      sudo: yes
+      file: path=/var/www/html state=absent
+
+    - name: symlink DocumentRoot to /vagrant/html
+      sudo: yes
+      file:
+        src=/vagrant/html
+        dest=/var/www/html
+        state=link
+        force=yes
+
     - name: update the MySQL root password...
       sudo: yes
       mysql_user:
