@@ -33,3 +33,39 @@
         sha256sum=aea82d6fb23ab23c895cd1cc46ad54e47eb68e4035e1aea940d2742d1f8a4aea
         mode=555
       ignore_errors: yes
+
+    - name: start or restart services...
+      sudo: yes
+      service:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+        enabled: true
+      with_items: "{{ services }}"
+
+    - name: update the MySQL root password...
+      sudo: yes
+      mysql_user:
+        name: root
+        host: "{{ item }}"
+        password: "{{ mysql_root_password }}"
+        check_implicit_admin: yes
+        priv: "*.*:ALL,GRANT"
+      with_items:
+        - "{{ ansible_hostname }}"
+        - 127.0.0.1
+        - ::1
+        - localhost
+
+    - name: create app database...
+      sudo: yes
+      mysql_db:
+        name="{{ database_name }}"
+        state=present
+
+    - name: create database user for app...
+      sudo: yes
+      mysql_user:
+        name="{{ database_user }}"
+        password="{{ mysql_app_password }}"
+        priv="{{ database_name }}".*:ALL
+        state=present
