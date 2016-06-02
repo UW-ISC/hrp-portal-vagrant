@@ -31,3 +31,12 @@
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
         - "{{ root_template_files }}"
+
+    - name: install wp-cli...
+      sudo: yes
+      get_url:
+        url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        dest=/usr/local/bin/wp
+        sha256sum=aea82d6fb23ab23c895cd1cc46ad54e47eb68e4035e1aea940d2742d1f8a4aea
+        mode=555
+      ignore_errors: yes
