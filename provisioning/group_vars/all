@@ -1,5 +1,6 @@
 apt_install_packages: ['apache2',
                        'apache2-utils',
+                       'git-core',
                        'libapache2-mod-php5',
                        'libmysqlclient-dev',
                        'mysql-server',
