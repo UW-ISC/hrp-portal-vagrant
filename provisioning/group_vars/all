@@ -13,6 +13,8 @@ git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-
 root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'},
                       {src: 'templates/my.cnf', dest: '/root/.my.cnf'}]
 
+template_files: [{src: 'templates/wp-config-sample.php', dest: '/vagrant/html/hrp-portal/wp-config.php'}]
+
 services: [{name: 'mysql', state: 'started'},
            {name: 'apache2', state: 'restarted'}]
 
@@ -20,3 +22,13 @@ mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt c
 database_name: 'hrp'
 database_user: 'hrp'
 mysql_app_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits,hexdigits,punctuation') }}"
+
+wp_auth_key: "{{ lookup('password', playbook_dir + '/generated/wpauthkey length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_secure_auth_key: "{{ lookup('password', playbook_dir + '/generated/wpsecureauthkey length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_logged_in_key: "{{ lookup('password', playbook_dir + '/generated/wploggedinkey length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_nonce_key: "{{ lookup('password', playbook_dir + '/generated/wpnoncekey length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_auth_salt: "{{ lookup('password', playbook_dir + '/generated/wpauthsalt length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_secure_auth_salt: "{{ lookup('password', playbook_dir + '/generated/wpsecureauthsalt length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_logged_in_salt: "{{ lookup('password', playbook_dir + '/generated/wploggedinsalt length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+wp_nonce_salt: "{{ lookup('password', playbook_dir + '/generated/wpnoncesalt length=64 chars=ascii_letters,digits,hexdigits,punctuation') }}"
+

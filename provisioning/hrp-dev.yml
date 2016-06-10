@@ -19,7 +19,7 @@
       with_items:
         - "{{ apt_install_packages }}"
 
-    - name: templates that require root into place...
+    - name: template configuration that require root into place...
       sudo: yes
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
@@ -88,3 +88,8 @@
         dest="{{ item.dest }}"
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
+
+    - name: template configuration into place...
+      template: src="{{ item.src }}" dest="{{ item.dest }}"
+      with_items:
+        - "{{ template_files }}"
