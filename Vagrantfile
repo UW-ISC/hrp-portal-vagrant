@@ -5,7 +5,30 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
+
+# from http://www.phase2technology.com/blog/running-an-ssh-agent-with-vagrant/
+# Check to see if there's an SSH agent running with keys.
+`ssh-add -l`
+
+if not $?.success?
+  puts 'Your SSH does not currently contain any keys (or is stopped.)'
+  puts 'Please start it and add your BitBucket SSH key to continue.'
+  exit 1
+end
+
+#if Vagrant::VERSION &lt; "1.5.1"
+#  puts 'This Vagrant environment requires Vagrant 1.5.1 or higher.'
+#  exit 1
+#end
+
+unless Vagrant.has_plugin?("vagrant-host-shell")
+  puts "This Vagrant environment requires the 'vagrant-host-shell' plugin."
+  puts "Please run `vagrant plugin install vagrant-host-shell` and then run this command again."
+  exit 1
+end
+
 Vagrant.configure(2) do |config|
+  config.ssh.forward_agent = true
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.

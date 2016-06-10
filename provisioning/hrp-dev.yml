@@ -81,3 +81,10 @@
         password="{{ mysql_app_password }}"
         priv="{{ database_name }}".*:ALL
         state=present
+
+    - name: clone git repositories...
+      git:
+        repo="{{ item.repo }}"
+        dest="{{ item.dest }}"
+        accept_hostkey=yes
+      with_items: "{{ git_install_repos }}"
