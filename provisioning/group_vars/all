@@ -8,7 +8,7 @@ apt_install_packages: ['apache2',
                        'php5-mysql',
                        'python-mysqldb']
 
-git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal'}]
+git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'working'}]
 
 root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'},
                       {src: 'templates/my.cnf', dest: '/root/.my.cnf'}]

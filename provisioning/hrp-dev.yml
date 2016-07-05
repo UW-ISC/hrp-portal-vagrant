@@ -86,6 +86,7 @@
       git:
         repo="{{ item.repo }}"
         dest="{{ item.dest }}"
+        version="{{ item.version }}"
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
 
