@@ -94,3 +94,11 @@
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
         - "{{ template_files }}"
+    
+    - name: install wordpress core...
+      shell: cd "/vagrant/html/hrp-portal/"; wp core install --url='localhost:8080/hrp-portal' --title='{{ item.title }}' --admin_user={{ item.user }} --admin_password={{ item.pass }} --admin_email={{ item.email }} --skip-email
+      with_items: "{{ wp_core_install }}"
+      
+    - name: create users...
+      shell: wp user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path='/vagrant/html/hrp-portal/'
+      with_items: "{{ wp_users_info }}"
