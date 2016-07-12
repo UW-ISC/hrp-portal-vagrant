@@ -20,7 +20,8 @@ template_files: [{src: 'templates/wp-config-sample.php', dest: '/vagrant/html/hr
 services: [{name: 'mysql', state: 'started'},
            {name: 'apache2', state: 'restarted'}]
           
-wp_users_info: [{name: 'editor', email: 'editor@uw.edu', password: 'test', role: 'editor'},
+wp_users_info: [{name: 'admin', email: 'admin@uw.edu', password: 'test', role: 'admin'},
+		{name: 'editor', email: 'editor@uw.edu', password: 'test', role: 'editor'},
                 {name: 'author', email: 'author@uw.edu', password: 'test', role: 'author'},
                 {name: 'contributor', email: 'contributor@uw.edu', password: 'test', role: 'contributor'},
                 {name: 'subscriber', email: 'subscriber@uw.edu', password: 'test', role: 'subscriber'}]
