@@ -6,7 +6,8 @@ apt_install_packages: ['apache2',
                        'mysql-server',
                        'php5',
                        'php5-mysql',
-                       'python-mysqldb']
+                       'python-mysqldb',
+                       'python-passlib']
 
 git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'working'}]
 
@@ -19,7 +20,10 @@ template_files: [{src: 'templates/wp-config-sample.php', dest: '/vagrant/html/hr
 services: [{name: 'mysql', state: 'started'},
            {name: 'apache2', state: 'restarted'}]
           
-wp_users_info: [{name: 'anstest', email: 'anstest@uw.edu', password: 'test', role: 'editor'}]
+wp_users_info: [{name: 'editor', email: 'editor@uw.edu', password: 'test', role: 'editor'},
+                {name: 'author', email: 'author@uw.edu', password: 'test', role: 'author'},
+                {name: 'contributor', email: 'contributor@uw.edu', password: 'test', role: 'contributor'},
+                {name: 'subscriber', email: 'subscriber@uw.edu', password: 'test', role: 'subscriber'}]
 wp_core_install: [{title: 'HR Stuff', user: 'admin', pass: 'test', email: 'admin@uw.edu'}]
 
 mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits,hexdigits,punctuation') }}"
