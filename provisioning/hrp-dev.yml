@@ -102,3 +102,7 @@
     - name: create users...
       shell: wp user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path='/vagrant/html/hrp-portal/'
       with_items: "{{ wp_users_info }}"
+      
+    - name: create a password file...
+      htpasswd: path="/vagrant/html/hrp-portal/.htpasswd" name={{ item.name }} password={{ item.password }}
+      with_items: "{{ wp_users_info }}"
