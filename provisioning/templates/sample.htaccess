@@ -22,14 +22,10 @@ Order allow,deny
 Deny from all
 </Files>
 
-<Files wp-login.php>
+#<Files wp-login.php>
 #AuthType UWNetID
 #require valid-user
-AuthUserFile /vagrant/html/hrp-portal/.htpasswd
-AuthName "HR-Portal Login"
-AuthType Basic
-require valid-user
-</Files>
+#</Files>
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
