@@ -98,11 +98,18 @@
     - name: install wordpress core...
       shell: cd "/vagrant/html/hrp-portal/"; wp core install --url='localhost:8080/hrp-portal' --title='{{ item.title }}' --admin_user={{ item.user }} --admin_password={{ item.pass }} --admin_email={{ item.email }} --skip-email
       with_items: "{{ wp_core_install }}"
+      ignore_errors: yes
       
     - name: create users...
       shell: wp user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path='/vagrant/html/hrp-portal/'
       with_items: "{{ wp_users_info }}"
+      ignore_errors: yes
         
     - name: create a password file...
       htpasswd: path="/vagrant/html/hrp-portal/.htpasswd" name={{ item.name }} password={{ item.password }}
       with_items: "{{ wp_users_info }}"
+      ignore_errors: yes
+      
+    - name: activate wp plugins...
+      shell: cd "/vagrant/html/hrp-portal/"; wp plugin activate {{ item.name }}
+      with_items: "{{ wp_activate_plugin_list }}"
