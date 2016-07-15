@@ -43,3 +43,4 @@ wp_secure_auth_salt: "{{ lookup('password', playbook_dir + '/generated/wpsecurea
 wp_logged_in_salt: "{{ lookup('password', playbook_dir + '/generated/wploggedinsalt length=64 chars=ascii_letters,digits,hexdigits') }}"
 wp_nonce_salt: "{{ lookup('password', playbook_dir + '/generated/wpnoncesalt length=64 chars=ascii_letters,digits,hexdigits') }}"
 
+database_file_path: "/vagrant/hrp_portal.sql"
