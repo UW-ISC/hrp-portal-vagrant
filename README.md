@@ -17,5 +17,7 @@ Download vagrant: https://www.vagrantup.com/ Download virtualBox: https://www.vi
 
 7. vagrant ssh
 
+8. Go to http://localhost:8080/hrp-portal
+
 Useful Links:
 wp-cli.org: simple, command line utility for updating wordpress core and plugins
