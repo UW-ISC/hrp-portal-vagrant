@@ -53,6 +53,14 @@
         dest=/var/www/html
         state=link
         force=yes
+        
+    - name: creating the uploads dir...
+      sudo: yes
+      file: 
+        path=/home/vagrant/uploads
+        state=directory
+        group=www-data
+        mode=0775
 
     - name: update the MySQL root password...
       sudo: yes
@@ -89,7 +97,23 @@
         version="{{ item.version }}"
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
-
+      
+    - name: checking uploads folder link status...
+      stat: path=/vagrant/html/hrp-portal/wp-content/uploads
+      register: sym
+      
+    - name: uploads folder already linked...
+      shell: echo "Already linked uploads folder"
+      when: sym.stat.islnk == True
+      
+    - name: symlink uploads dir...
+      file: 
+        src=/home/vagrant/uploads
+        dest=/vagrant/html/hrp-portal/wp-content/uploads
+        state=link
+        force=yes
+      when: sym.stat.islnk == False
+      
     - name: template configuration into place...
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
