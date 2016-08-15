@@ -30,7 +30,7 @@
       get_url:
         url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest=/usr/local/bin/wp
-        sha256sum=aea82d6fb23ab23c895cd1cc46ad54e47eb68e4035e1aea940d2742d1f8a4aea
+        sha256sum=cdc15ba1416c090262a0694edd4e2b656dcbd9ef5119258930d92d8c2e65f608
         mode=555
       ignore_errors: yes
 
@@ -100,11 +100,7 @@
       
     - name: checking uploads folder link status...
       stat: path=/vagrant/html/hrp-portal/wp-content/uploads
-      register: sym
-      
-    - name: uploads folder already linked...
-      shell: echo "Already linked uploads folder"
-      when: sym.stat.islnk == True
+      register: linker
       
     - name: symlink uploads dir...
       file: 
@@ -112,7 +108,7 @@
         dest=/vagrant/html/hrp-portal/wp-content/uploads
         state=link
         force=yes
-      when: sym.stat.islnk == False
+      when: not linker.stat.islnk
       
     - name: template configuration into place...
       template: src="{{ item.src }}" dest="{{ item.dest }}"
