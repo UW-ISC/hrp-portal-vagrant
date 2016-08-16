@@ -9,7 +9,7 @@ apt_install_packages: ['apache2',
                        'python-mysqldb',
                        'python-passlib']
 
-git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'working'}]
+git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'master'}]
 
 root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'},
                       {src: 'templates/my.cnf', dest: '/root/.my.cnf'}]
@@ -27,7 +27,9 @@ wp_users_info: [{name: 'admin', email: 'admin@uw.edu', password: 'test', role: '
                 {name: 'subscriber', email: 'subscriber@uw.edu', password: 'test', role: 'subscriber'}]
 wp_core_install: [{title: 'HR Stuff', user: 'admin', pass: 'test', email: 'admin@uw.edu'}]
 wp_activate_plugin_list: [{name: 'http-authentication'},
-                          {name: 'wp-migrate-db'}]
+                          {name: 'wp-migrate-db'},
+                          {name: 'edit-flow'},
+                          {name: 'revisionary'}]
 
 mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits,hexdigits,punctuation') }}"
 database_name: 'hrp'
