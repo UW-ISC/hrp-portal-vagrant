@@ -23,4 +23,5 @@ Useful Links:
 wp-cli.org: simple, command line utility for updating wordpress core and plugins
 
 To back up your database, use the following command in your vagrant folder:
+
 bash export_database.sh
