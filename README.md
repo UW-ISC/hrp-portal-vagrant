@@ -26,7 +26,7 @@ To back up your database, use the following command in your vagrant folder:
 
 bash export_database.sh
 
-To load a database into your vagrant, do the following commands:
+To load a database into your vagrant, use the following commands:
 
 vagrant destroy
 
