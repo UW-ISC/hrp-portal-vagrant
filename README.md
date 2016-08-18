@@ -7,7 +7,7 @@ Download vagrant: https://www.vagrantup.com/ Download virtualBox: https://www.vi
 2. git clone ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal-vagrant.git<br />
  *If you get an error, then follow the steps on https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html to create and add the ssh key to bitbucket. On successful completion, redo step 2.
 
-3. cd hrp-portal-vagrant, then git checkout working
+3. cd hrp-portal-vagrant, then git checkout working<br />
  *If you have a database to load, copy it into hrp-portal-vagrant and make sure it's called hrp_portal.sql
 
 4. vagrant plugin install vagrant-host-shell
@@ -27,7 +27,7 @@ To back up your database first connect to your vagrant box through the command l
 
 vagrant ssh
 
- use the following command in your vagrant folder:
+Use the following command in your vagrant folder:
 
 bash export_database.sh
 
