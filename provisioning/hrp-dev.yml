@@ -97,19 +97,7 @@
         version="{{ item.version }}"
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
-      
-    - name: checking uploads folder link status...
-      stat: path=/vagrant/html/hrp-portal/wp-content/uploads
-      register: linker
-      
-    - name: symlink uploads dir...
-      file: 
-        src=/home/vagrant/uploads
-        dest=/vagrant/html/hrp-portal/wp-content/uploads
-        state=link
-        force=yes
-      when: not linker.stat.islnk
-      
+
     - name: template configuration into place...
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
