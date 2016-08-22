@@ -29,7 +29,8 @@ wp_core_install: [{title: 'HR Stuff', user: 'admin', pass: 'test', email: 'admin
 wp_activate_plugin_list: [{name: 'http-authentication'},
                           {name: 'wp-migrate-db'},
                           {name: 'edit-flow'},
-                          {name: 'revisionary'}]
+                          {name: 'revisionary'},
+                          {name: 'user-role-editor'}]
 
 mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits,hexdigits,punctuation') }}"
 database_name: 'hrp'
