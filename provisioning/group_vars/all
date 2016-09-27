@@ -6,9 +6,10 @@ apt_install_packages: ['apache2',
                        'mysql-server',
                        'php5',
                        'php5-mysql',
-                       'python-mysqldb']
+                       'python-mysqldb',
+                       'python-passlib']
 
-git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal'}]
+git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'master'}]
 
 root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'},
                       {src: 'templates/my.cnf', dest: '/root/.my.cnf'}]
@@ -18,6 +19,18 @@ template_files: [{src: 'templates/wp-config-sample.php', dest: '/vagrant/html/hr
 
 services: [{name: 'mysql', state: 'started'},
            {name: 'apache2', state: 'restarted'}]
+          
+wp_users_info: [{name: 'admin', email: 'admin@uw.edu', password: 'test', role: 'admin'},
+                {name: 'editor', email: 'editor@uw.edu', password: 'test', role: 'editor'},
+                {name: 'author', email: 'author@uw.edu', password: 'test', role: 'author'},
+                {name: 'contributor', email: 'contributor@uw.edu', password: 'test', role: 'contributor'},
+                {name: 'subscriber', email: 'subscriber@uw.edu', password: 'test', role: 'subscriber'}]
+wp_core_install: [{title: 'HR Stuff', user: 'admin', pass: 'test', email: 'admin@uw.edu'}]
+wp_activate_plugin_list: [{name: 'http-authentication'},
+                          {name: 'wp-migrate-db'},
+                          {name: 'edit-flow'},
+                          {name: 'revisionary'},
+                          {name: 'user-role-editor'}]
 
 mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits') }}"
 database_name: 'hrp'
@@ -33,3 +46,4 @@ wp_secure_auth_salt: "{{ lookup('password', playbook_dir + '/generated/wpsecurea
 wp_logged_in_salt: "{{ lookup('password', playbook_dir + '/generated/wploggedinsalt length=64 chars=ascii_letters,digits,hexdigits') }}"
 wp_nonce_salt: "{{ lookup('password', playbook_dir + '/generated/wpnoncesalt length=64 chars=ascii_letters,digits,hexdigits') }}"
 
+database_file_path: "/vagrant/hrp_portal.sql"
