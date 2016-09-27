@@ -19,10 +19,10 @@ template_files: [{src: 'templates/wp-config-sample.php', dest: '/vagrant/html/hr
 services: [{name: 'mysql', state: 'started'},
            {name: 'apache2', state: 'restarted'}]
 
-mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits,hexdigits,punctuation') }}"
+mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits') }}"
 database_name: 'hrp'
 database_user: 'hrp'
-mysql_app_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits,hexdigits,punctuation') }}"
+mysql_app_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits') }}"
 
 wp_auth_key: "{{ lookup('password', playbook_dir + '/generated/wpauthkey length=64 chars=ascii_letters,digits,hexdigits') }}"
 wp_secure_auth_key: "{{ lookup('password', playbook_dir + '/generated/wpsecureauthkey length=64 chars=ascii_letters,digits,hexdigits') }}"
