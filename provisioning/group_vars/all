@@ -5,6 +5,7 @@ apt_install_packages: ['apache2',
                        'libmysqlclient-dev',
                        'mysql-server',
                        'php5',
+                       'php5-curl',
                        'php5-mysql',
                        'python-mysqldb',
                        'python-passlib']
