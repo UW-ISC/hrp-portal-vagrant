@@ -30,7 +30,7 @@
       get_url:
         url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest=/usr/local/bin/wp
-        sha256sum=cdc15ba1416c090262a0694edd4e2b656dcbd9ef5119258930d92d8c2e65f608
+        sha256sum=20afc72b502d072bc26e95c1e61c12554277a56eb7451df2b92a46d32393bb97
         mode=555
       ignore_errors: yes
 
@@ -53,10 +53,10 @@
         dest=/var/www/html
         state=link
         force=yes
-        
+
     - name: creating the uploads dir...
       sudo: yes
-      file: 
+      file:
         path=/home/vagrant/uploads
         state=directory
         group=www-data
@@ -102,22 +102,22 @@
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
         - "{{ template_files }}"
-    
+
     - name: install wordpress core...
       shell: cd "/vagrant/html/hrp-portal/"; wp core install --url='localhost:8080/hrp-portal' --title='{{ item.title }}' --admin_user={{ item.user }} --admin_password={{ item.pass }} --admin_email={{ item.email }} --skip-email
       with_items: "{{ wp_core_install }}"
       ignore_errors: yes
-      
+
     - name: create users...
       shell: wp user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path='/vagrant/html/hrp-portal/'
       with_items: "{{ wp_users_info }}"
       ignore_errors: yes
-        
+
     - name: create a password file...
       htpasswd: path="/vagrant/html/hrp-portal/.htpasswd" name={{ item.name }} password={{ item.password }}
       with_items: "{{ wp_users_info }}"
       ignore_errors: yes
-      
+
     - name: activate wp plugins...
       shell: cd "/vagrant/html/hrp-portal/"; wp plugin activate {{ item.name }}
       with_items: "{{ wp_activate_plugin_list }}"
@@ -131,4 +131,3 @@
       sudo: yes
       mysql_db: name={{ database_name }} state=import target={{ database_file_path }}
       when: sql.stat.exists
-
