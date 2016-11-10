@@ -33,6 +33,10 @@
         sha256sum=20afc72b502d072bc26e95c1e61c12554277a56eb7451df2b92a46d32393bb97
         mode=555
       ignore_errors: yes
+      
+    - name: enable mod_rewrite...
+      sudo: yes
+      apache2_module: state=present name=rewrite
 
     - name: start or restart services...
       sudo: yes
