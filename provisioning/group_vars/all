@@ -11,7 +11,8 @@ apt_install_packages: ['apache2',
                        'python-passlib']
 
 git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'master'},
-                    {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-isc.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/hrp-isc', version: 'master'}]
+                    {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-isc.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/hrp-isc', version: 'master'},
+                    {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/isc-uw-child.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/isc-uw-child', version: 'master'}]
 
 root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'},
                       {src: 'templates/my.cnf', dest: '/root/.my.cnf'}]
