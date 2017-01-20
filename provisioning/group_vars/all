@@ -12,6 +12,8 @@ apt_install_packages: ['apache2',
 
 node_packages: ['grunt']
 
+ruby_gems: ['sass']
+
 git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'master'},
                     {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-isc.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/hrp-isc', version: 'master'},
                     {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/isc-uw-child.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/isc-uw-child', version: 'develop'}]

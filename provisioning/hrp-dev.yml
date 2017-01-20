@@ -26,6 +26,12 @@
       with_items:
         - "{{ node_packages }}"
 
+    - name: install ruby gems...
+      sudo: yes
+      action: command gem install sass creates=/usr/local/bin/sass
+      with_items:
+        - "{{ ruby_gems }}"
+
     - name: template configuration that require root into place...
       sudo: yes
       template: src="{{ item.src }}" dest="{{ item.dest }}"
