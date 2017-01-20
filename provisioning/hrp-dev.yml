@@ -19,6 +19,13 @@
       with_items:
         - "{{ apt_install_packages }}"
 
+    - name: install node packages...
+      sudo: yes
+      npm: name="{{ item }}"
+        global=yes
+      with_items:
+        - "{{ node_packages }}"
+
     - name: template configuration that require root into place...
       sudo: yes
       template: src="{{ item.src }}" dest="{{ item.dest }}"
