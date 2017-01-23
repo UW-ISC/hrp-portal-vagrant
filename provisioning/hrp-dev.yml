@@ -115,6 +115,10 @@
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
 
+    - name: install node packages local to the project...
+      npm:
+        path: /vagrant/html/hrp-portal/wp-content/themes/isc-uw-child
+
     - name: template configuration into place...
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
