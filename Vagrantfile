@@ -96,5 +96,6 @@ Vagrant.configure(2) do |config|
   SHELL
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "provisioning/hrp-dev.yml" 
+    ansible.verbose = "-vv"
   end
 end
