@@ -153,3 +153,9 @@
       sudo: yes
       mysql_db: name={{ database_name }} state=import target={{ database_file_path }}
       when: sql.stat.exists
+
+    - name: add convenience symlink to themes...
+      file:
+        src='/vagrant/html/hrp-portal/wp-content/themes'
+        dest='/home/vagrant/themes'
+        state=link
