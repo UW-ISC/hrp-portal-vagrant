@@ -159,9 +159,3 @@
         src='/vagrant/html/hrp-portal/wp-content/themes'
         dest='/home/vagrant/themes'
         state=link
-
-    - name: add convenience symlink to vagrant...
-      file:
-        src='/vagrant'
-        dest='/home/vagrant/vagrant'
-        state=link
