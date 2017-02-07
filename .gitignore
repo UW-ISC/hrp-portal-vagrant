@@ -1,3 +1,4 @@
 #Vagrant specific
 .vagrant/
 provisioning/generated/
+hrp_portal.sql
