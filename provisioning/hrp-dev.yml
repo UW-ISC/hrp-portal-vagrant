@@ -73,11 +73,10 @@
 
     - name: creating the uploads dir...
       sudo: yes
-      file:
-        path=/home/vagrant/uploads
-        state=directory
-        group=www-data
-        mode=0775
+      file: path=/home/vagrant/uploads state=directory group=www-data mode=0775
+
+    - name: symlink uploads dir...
+      file: src=/home/vagrant/uploads dest=/vagrant/html/hrp-portal/wp-content/uploads state=link
 
     - name: update the MySQL root password...
       sudo: yes
