@@ -5,6 +5,7 @@ You may need to have the Xcode developer tools installed first, if you do not al
 Download vagrant: https://www.vagrantup.com/ Download virtualBox: https://www.virtualbox.org/wiki/Downloads install both vagrant and virtualBox normally and then open the terminal window to run the following command 
 
 1. ` sudo pip install ansible ` # if you don't have pip, then installed it first "sudo easy_install pip"
+    *If you get errors on Mac OS X, you may have to additionally ` sudo pip install --ignore-installed setuptools pyparsing six `
 2. ` git clone ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal-vagrant.git `
     *If you get an error, then follow the steps on https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html to create and add the ssh key to bitbucket. On successful completion, redo step 2.
 3. ` cd hrp-portal-vagrant `

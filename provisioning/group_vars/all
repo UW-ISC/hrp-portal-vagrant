@@ -11,6 +11,8 @@ apt_install_packages: ['apache2',
                        'python-mysqldb',
                        'python-passlib']
 
+pear_packages: ['PHP_Codesniffer']
+
 node_packages: ['grunt-cli']
 
 ruby_gems: ['sass']
