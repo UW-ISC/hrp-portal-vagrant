@@ -114,6 +114,10 @@
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
 
+    - name: set path to Wordpress Coding Standards...
+      sudo: yes
+      command: phpcs --config-set installed_paths /home/vagrant/wpcs
+
     - name: creating the uploads dir...
       sudo: yes
       file: path=/home/vagrant/uploads state=directory group=www-data mode=0775
