@@ -43,7 +43,7 @@
       get_url:
         url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest=/usr/local/bin/wp
-        sha256sum=974997f6dc49750598aad8f519c29b33880032a73ada7a9bcc2a299bbe034819
+        sha256sum=ac877071bd85e3fe0e0ade5feef8b85a9a474737eab7d5682f2e2987d8a76221
         mode=555
       ignore_errors: yes
       
