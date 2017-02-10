@@ -11,7 +11,8 @@ apt_install_packages: ['apache2',
                        'python-mysqldb',
                        'python-passlib']
 
-node_packages: ['grunt-cli']
+node_packages: ['grunt-cli',
+                'jshint']
 
 ruby_gems: ['sass']
 
