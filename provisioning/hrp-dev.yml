@@ -19,6 +19,13 @@
       with_items:
         - "{{ apt_install_packages }}"
 
+    - name: install pear packages...
+      sudo: yes
+      pear: name="{{ item }}"
+        state=present
+      with_items:
+        - "{{ pear_packages }}"
+
     - name: install node packages...
       sudo: yes
       npm: name="{{ item }}"
@@ -106,6 +113,10 @@
         version="{{ item.version }}"
         accept_hostkey=yes
       with_items: "{{ git_install_repos }}"
+
+    - name: set path to Wordpress Coding Standards...
+      sudo: yes
+      command: phpcs --config-set installed_paths /home/vagrant/wpcs
 
     - name: creating the uploads dir...
       sudo: yes
