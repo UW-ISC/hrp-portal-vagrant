@@ -13,7 +13,8 @@ apt_install_packages: ['apache2',
 
 pear_packages: ['PHP_Codesniffer']
 
-node_packages: ['grunt-cli']
+node_packages: ['grunt-cli',
+                'jshint']
 
 ruby_gems: ['sass']
 
