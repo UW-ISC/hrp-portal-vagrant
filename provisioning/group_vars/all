@@ -38,11 +38,6 @@ wp_users_info: [{name: 'admin', email: 'admin@uw.edu', password: 'test', role: '
                 {name: 'contributor', email: 'contributor@uw.edu', password: 'test', role: 'contributor'},
                 {name: 'subscriber', email: 'subscriber@uw.edu', password: 'test', role: 'subscriber'}]
 wp_core_install: [{title: 'HR Stuff', user: 'admin', pass: 'test', email: 'admin@uw.edu'}]
-wp_activate_plugin_list: [{name: 'http-authentication'},
-                          {name: 'wp-migrate-db'},
-                          {name: 'edit-flow'},
-                          {name: 'revisionary'},
-                          {name: 'user-role-editor'}]
 
 mysql_root_password: "{{ lookup('password', playbook_dir + '/generated/mysqlrt chars=ascii_letters,digits') }}"
 database_name: 'hrp'

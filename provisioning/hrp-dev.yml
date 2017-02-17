@@ -149,11 +149,6 @@
       with_items: "{{ wp_users_info }}"
       ignore_errors: yes
 
-    - name: activate wp plugins...
-      shell: cd "/vagrant/html/hrp-portal/"; wp plugin activate {{ item.name }}
-      with_items: "{{ wp_activate_plugin_list }}"
-      ignore_errors: yes
-
     # Only IF the sql file is located in /vagrant
     - name: check for a sqldump to load...
       stat: path={{ database_file_path }}
