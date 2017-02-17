@@ -139,11 +139,6 @@
       with_items: "{{ wp_core_install }}"
       ignore_errors: yes
 
-    - name: create users...
-      shell: wp user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path='/vagrant/html/hrp-portal/'
-      with_items: "{{ wp_users_info }}"
-      ignore_errors: yes
-
     - name: create a password file...
       htpasswd: path="/vagrant/html/hrp-portal/.htpasswd" name={{ item.name }} password={{ item.password }}
       with_items: "{{ wp_users_info }}"
@@ -158,3 +153,8 @@
       sudo: yes
       mysql_db: name={{ database_name }} state=import target={{ database_file_path }}
       when: sql.stat.exists
+
+    - name: create users...
+      shell: wp user create {{ item.name }} {{ item.email }} --user_pass={{ item.password }} --role={{ item.role }} --path='/vagrant/html/hrp-portal/'
+      with_items: "{{ wp_users_info }}"
+      ignore_errors: yes
