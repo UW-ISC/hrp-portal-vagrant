@@ -3,7 +3,8 @@
 
   tasks:
     - name: update system packages...
-      sudo: yes
+      become: yes
+      become_method: sudo
       apt:
         cache_valid_time=86400
         update_cache=yes
@@ -11,7 +12,8 @@
       ignore_errors: yes
 
     - name: install apt packages...
-      sudo: yes
+      become: yes
+      become_method: sudo
       apt: name="{{ item }}"
         update_cache=yes
         cache_valid_time=864000
@@ -20,33 +22,38 @@
         - "{{ apt_install_packages }}"
 
     - name: install pear packages...
-      sudo: yes
+      become: yes
+      become_method: sudo
       pear: name="{{ item }}"
         state=present
       with_items:
         - "{{ pear_packages }}"
 
     - name: install node packages...
-      sudo: yes
+      become: yes
+      become_method: sudo
       npm: name="{{ item }}"
         global=yes
       with_items:
         - "{{ node_packages }}"
 
     - name: install ruby gems...
-      sudo: yes
+      become: yes
+      become_method: sudo
       action: command gem install sass creates=/usr/local/bin/sass
       with_items:
         - "{{ ruby_gems }}"
 
     - name: template configuration that require root into place...
-      sudo: yes
+      become: yes
+      become_method: sudo
       template: src="{{ item.src }}" dest="{{ item.dest }}"
       with_items:
         - "{{ root_template_files }}"
 
     - name: install wp-cli...
-      sudo: yes
+      become: yes
+      become_method: sudo
       get_url:
         url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest=/usr/local/bin/wp
@@ -55,11 +62,13 @@
       ignore_errors: yes
       
     - name: enable mod_rewrite...
-      sudo: yes
+      become: yes
+      become_method: sudo
       apache2_module: state=present name=rewrite
 
     - name: start or restart services...
-      sudo: yes
+      become: yes
+      become_method: sudo
       service:
         name: "{{ item.name }}"
         state: "{{ item.state }}"
@@ -67,11 +76,13 @@
       with_items: "{{ services }}"
 
     - name: remove /var/www/html
-      sudo: yes
+      become: yes
+      become_method: sudo
       file: path=/var/www/html state=absent
 
     - name: symlink DocumentRoot to /vagrant/html
-      sudo: yes
+      become: yes
+      become_method: sudo
       file:
         src=/vagrant/html
         dest=/var/www/html
@@ -79,7 +90,8 @@
         force=yes
 
     - name: update the MySQL root password...
-      sudo: yes
+      become: yes
+      become_method: sudo
       mysql_user:
         name: root
         host: "{{ item }}"
@@ -93,13 +105,15 @@
         - localhost
 
     - name: create app database...
-      sudo: yes
+      become: yes
+      become_method: sudo
       mysql_db:
         name="{{ database_name }}"
         state=present
 
     - name: create database user for app...
-      sudo: yes
+      become: yes
+      become_method: sudo
       mysql_user:
         name="{{ database_user }}"
         password="{{ mysql_app_password }}"
@@ -115,11 +129,13 @@
       with_items: "{{ git_install_repos }}"
 
     - name: set path to Wordpress Coding Standards...
-      sudo: yes
+      become: yes
+      become_method: sudo
       command: phpcs --config-set installed_paths /home/vagrant/wpcs
 
     - name: creating the uploads dir...
-      sudo: yes
+      become: yes
+      become_method: sudo
       file: path=/home/vagrant/uploads state=directory group=www-data mode=0775
 
     - name: symlink uploads dir...
@@ -150,7 +166,8 @@
       register: sql
 
     - name: load database into MySQL...
-      sudo: yes
+      become: yes
+      become_method: sudo
       mysql_db: name={{ database_name }} state=import target={{ database_file_path }}
       when: sql.stat.exists
 
