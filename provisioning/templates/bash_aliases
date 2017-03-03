@@ -1,0 +1,2 @@
+alias phpcs="phpcs --standard=WordPress"
+alias phpcbf="phpcbf --standard=WordPress"
