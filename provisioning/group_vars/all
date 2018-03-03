@@ -1,5 +1,6 @@
 apt_install_packages: ['apache2',
                        'apache2-utils',
+                       'build-essential',
                        'git-core',
                        'libapache2-mod-php',
                        'libmysqlclient-dev',
@@ -9,7 +10,9 @@ apt_install_packages: ['apache2',
                        'php-mysql',
                        'php-pear',
                        'python-mysqldb',
-                       'python-passlib']
+                       'python-passlib',
+                       'ruby-dev',
+                       'rubygems']
 
 pear_packages: ['PHP_Codesniffer']
 

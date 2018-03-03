@@ -131,7 +131,7 @@
     - name: set path to Wordpress Coding Standards...
       become: yes
       become_method: sudo
-      command: phpcs --config-set installed_paths /home/vagrant/wpcs
+      command: phpcs --config-set installed_paths /home/ubuntu/wpcs
 
     - name: creating the uploads dir...
       become: yes
