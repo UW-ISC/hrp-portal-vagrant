@@ -31,7 +31,7 @@ root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/si
 
 template_files: [{src: 'templates/wp-config-sample.php', dest: '/vagrant/html/hrp-portal/wp-config.php'},
                  {src: 'templates/sample.htaccess', dest: '/vagrant/html/hrp-portal/.htaccess'},
-                 {src: 'templates/bash_aliases', dest: '/home/vagrant/.bash_aliases'}]
+                 {src: 'templates/bash_aliases', dest: '/home/ubuntu/.bash_aliases'}]
 
 services: [{name: 'mysql', state: 'started'},
            {name: 'apache2', state: 'restarted'}]
