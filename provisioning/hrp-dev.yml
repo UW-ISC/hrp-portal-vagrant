@@ -140,6 +140,7 @@
 
     - name: symlink uploads dir...
       file: src=/home/vagrant/uploads dest=/vagrant/html/hrp-portal/wp-content/uploads state=link
+      ignore_errors: yes
 
     - name: install node packages local to the project...
       npm:
