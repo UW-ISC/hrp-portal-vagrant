@@ -21,9 +21,8 @@ node_packages: ['grunt-cli',
 
 ruby_gems: ['sass']
 
-git_install_repos: [{repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'master'},
-                    {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-isc.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/hrp-isc', version: 'master'},
-                    {repo: 'ssh://git@git.s.uw.edu/~cstimmel_washington.edu/isc-uw-child.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/isc-uw-child', version: 'develop'},
+git_install_repos: [{repo: 'git@github.com:UW-ISC/hrp-portal.git', dest: '/vagrant/html/hrp-portal', version: 'master'},
+                    {repo: 'git@github.com:UW-ISC/isc-uw-child.git', dest: '/vagrant/html/hrp-portal/wp-content/themes/isc-uw-child', version: 'develop'},
                     {repo: 'https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git', dest: '/home/ubuntu/wpcs', version: 'master'}]
 
 root_template_files: [{src: 'templates/000-default.conf', dest: '/etc/apache2/sites-available/000-default.conf'},
