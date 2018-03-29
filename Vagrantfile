@@ -12,7 +12,7 @@
 
 if not $?.success?
   puts 'Your SSH does not currently contain any keys (or is stopped.)'
-  puts 'Please start it and add your BitBucket SSH key to continue.'
+  puts 'Please start it and add your SSH key to continue.'
   exit 1
 end
 

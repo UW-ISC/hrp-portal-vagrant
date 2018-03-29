@@ -6,16 +6,15 @@ Download vagrant: https://www.vagrantup.com/ Download virtualBox: https://www.vi
 
 1. ` sudo pip install ansible ` # if you don't have pip, then installed it first "sudo easy_install pip"
     *If you get errors on Mac OS X, you may have to additionally ` sudo pip install --ignore-installed setuptools pyparsing six `
-2. ` git clone ssh://git@git.s.uw.edu/~cstimmel_washington.edu/hrp-portal-vagrant.git `
-    *If you get an error, then follow the steps on https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html to create and add the ssh key to bitbucket. On successful completion, redo step 2.
+2. ` git clone https://github.com/UW-ISC/hrp-portal-vagrant.git `
+    *If you get an error, then follow the steps on https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/ to create and add the ssh key to github. On successful completion, redo step 2.
 3. ` cd hrp-portal-vagrant `
     *If you have a database to load, copy it into hrp-portal-vagrant and make sure it's called hrp_portal.sql
 4. ` vagrant plugin install vagrant-host-shell `
-5. ` vagrant box add ubuntu/trusty64 https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box `
-6. ` vagrant up `
-7. ` vagrant ssh `
-8. Go to http://localhost:8080/hrp-portal
-9. If you are editing styles, be sure to use the scss files located in assets, then
+5. ` vagrant up `
+6. ` vagrant ssh `
+7. Go to http://localhost:8080/hrp-portal
+8. If you are editing styles, be sure to use the scss files located in assets, then
 ` vagrant ssh `
 ` cd /vagrant/html/hrp-portal/wp-content/themes/isc-uw-child `
 ` grunt `
