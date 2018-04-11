@@ -12,7 +12,7 @@
 
 if not $?.success?
   puts 'Your SSH does not currently contain any keys (or is stopped.)'
-  puts 'Please start it and add your BitBucket SSH key to continue.'
+  puts 'Please start it and add your SSH key to continue.'
   exit 1
 end
 
@@ -35,7 +35,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end

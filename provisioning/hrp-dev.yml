@@ -57,7 +57,7 @@
       get_url:
         url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest=/usr/local/bin/wp
-        sha256sum=ac877071bd85e3fe0e0ade5feef8b85a9a474737eab7d5682f2e2987d8a76221
+        sha256sum=f615d57957e66a09f57acc844a1fc5402e9fa581dcb387bbe1affc4d155baf9d
         mode=555
       ignore_errors: yes
       
@@ -140,6 +140,7 @@
 
     - name: symlink uploads dir...
       file: src=/home/vagrant/uploads dest=/vagrant/html/hrp-portal/wp-content/uploads state=link
+      ignore_errors: yes
 
     - name: install node packages local to the project...
       npm:

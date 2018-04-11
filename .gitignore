@@ -2,3 +2,4 @@
 .vagrant/
 provisioning/generated/
 hrp_portal.sql
+ubuntu-xenial-16.04-cloudimg-console.log
